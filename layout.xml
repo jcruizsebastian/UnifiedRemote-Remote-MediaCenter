@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<layout lightcolor="#0f7aa6" darkcolor="#0d5880">
+<grid>
+    
+            <!-- <row weight=".5"> -->
+                <!-- <text id="chat_char" hint="char" text="t" textalign="center" onchange="update_char" weight=".5" /> -->
+                <!-- <text id="chat" hint="enter message..." onchange="update_text" ondone="text_done" weight="5" /> -->
+                <!-- <button type="button" icon="right" ontap="send_text" onhold="send_text_esc" weight="1" /> -->
+            <!-- </row> -->
+            <!-- <row> -->
+                <!-- <label text="Recently Played" /> -->
+            <!-- </row> -->
+            <!-- <row weight="5"> -->
+                <!-- <list id="recent_games" ontap="play_recent_game"> -->
+                <!-- </list> -->
+            <!-- </row> -->
+			<row weight="1">
+                <button type="button" text="PC" ontap="pc_screen" />
+				<button type="button" text="Steam" ontap="steam_screen" />
+				<button type="button" text="Kodi" ontap="switch" />
+            </row>
+            <row weight="1">
+				<button type="button" text="On" ontap="@wol" />
+                <button type="button" text="Suspend" ontap="sleep" />
+                <button type="button" text="Off" ontap="shutdown" />
+            </row>
+        <!-- <tab text="All Games"> -->
+            <!-- <row weight=".5"> -->
+                <!-- <text id="filter" hint="filter games..." onchange="update_filter" weight="5" /> -->
+                <!-- <button type="button" icon="docclose" ontap="clear_filter" weight="1" /> -->
+            <!-- </row> -->
+            <!-- <row weight="6"> -->
+                <!-- <list id="all_games" ontap="play_all_game"> -->
+                <!-- </list> -->
+            <!-- </row> -->
+            <!-- <row weight="1"> -->
+                <!-- <button type="button" text="by playtime" ontap="sort_by_playtime" /> -->
+                <!-- <button type="button" text="by name" ontap="sort_by_name" /> -->
+            <!-- </row> -->
+        <!-- </tab> -->
+    </grid>
+</layout>
