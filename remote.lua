@@ -19,15 +19,7 @@ end
 
 --@help Change screen
 actions.pc_screen = function ()
-	
-	kb.stroke("lwin", "p");
-    os.sleep (500);
-    kb.stroke("end");
-	os.sleep (500);
-	kb.stroke("return");
-	os.sleep (500);
-	kb.stroke("esc");
-	os.sleep (500);
+	set_secondary_screen();
 	
 	win.close("kodi.exe");
 	win.close("steam.exe");
@@ -38,52 +30,20 @@ end
 
 --@help Force system shutdown
 --@param sec:number Timeout in seconds (default 5)
-actions.shutdown = function (sec)
+actions.shutdown = function ()
+	set_secondary_screen();
+
+	os.sleep (2000);
+
 	if not sec then sec = 5; end
 	os.execute("shutdown /s /f /t " .. sec);
 end
 
--- --@help Launch Kodi application
--- actions.launch = function()
-	-- if OS_WINDOWS then
-		-- os.start("%programfiles(x86)%\\Kodi\\Kodi.exe"); 
-	-- elseif OS_OSX then
-		-- os.script("tell application \"Kodi\" to activate");
-	-- end
--- end
-
--- --@help Focus Kodi application
--- actions.switch = function()
-	-- if OS_WINDOWS then
-		-- local hwnd = win.window("Kodi.exe");
-		-- if (hwnd == 0) then actions.launch(); end
-		-- win.switchtowait("Kodi.exe");
-	-- end
--- end
-
--- --@help Start playback
--- actions.kodi_screen = function()
-	-- actions.switch();
-	-- kb.stroke("space");
--- end
-
 --@help Change screen
 actions.kodi_screen = function ()
-	kb.stroke("lwin", "p");
-    os.sleep (500);
-    kb.stroke("end");
-	os.sleep (500);
-	kb.stroke("up");
-	os.sleep (500);
-	kb.stroke("return");
-	os.sleep (1500);
-    kb.stroke("home");
-	os.sleep (500);
-	kb.stroke("return");
-	os.sleep (500);
-	kb.stroke("esc");
+	set_expand_screen();
+	set_primary_screen();
 
-	os.sleep (2000);
 	os.start("C:/Program Files (x86)/Kodi/kodi.exe");
 	os.sleep (6000);
 	
@@ -91,40 +51,10 @@ actions.kodi_screen = function ()
     ms.click();
 end
 
--- --@help Launch Kodi application
--- actions.launch = function()
--- 	if OS_WINDOWS then
--- 		os.start("%programfiles(x86)%\\Kodi\\Kodi.exe"); 
--- 	elseif OS_OSX then
--- 		os.script("tell application \"Kodi\" to activate");
--- 	end
--- end
-
--- --@help Focus Kodi application
--- actions.switch = function()
--- 	if OS_WINDOWS then
--- 		local hwnd = win.window("Kodi.exe");
--- 		if (hwnd == 0) then actions.launch(); end
--- 		win.switchtowait("Kodi.exe");
--- 	end
--- end
-
 --@help Change screen
 actions.steam_screen = function ()
-	
-	kb.stroke("lwin", "p");
-    os.sleep (500);
-    kb.stroke("end");
-	os.sleep (500);
-	kb.stroke("up");
-	os.sleep (500);
-	kb.stroke("return");
-	os.sleep (1500);
-    kb.stroke("home");
-	os.sleep (500);
-	kb.stroke("return");
-	os.sleep (500);
-	kb.stroke("esc");
+	set_expand_screen();
+	set_primary_screen();
 
 	os.sleep (2000);
 	os.start("C:/Program Files (x86)/Steam/Steam.exe -bigpicture");
@@ -141,6 +71,39 @@ end
 
 --@help Focus Kodi application
 actions.switch = function()
+	set_expand_screen();
+	set_primary_screen();
+	
+	if OS_WINDOWS then
+		local hwnd = win.window("Kodi.exe");
+		if (hwnd == 0) then actions.launch(); end
+		win.switchtowait("Kodi.exe");
+	end
+end
+
+set_primary_screen = function ()
+	kb.stroke("lwin", "p");
+    os.sleep (500);
+    kb.stroke("home");
+	os.sleep (500);
+	kb.stroke("return");
+	os.sleep (500);
+	kb.stroke("esc");
+	os.sleep (1000);
+end
+
+set_secondary_screen = function ()
+	kb.stroke("lwin", "p");
+    os.sleep (500);
+    kb.stroke("end");
+	os.sleep (500);
+	kb.stroke("return");
+	os.sleep (500);
+	kb.stroke("esc");
+	os.sleep (1000);
+end
+
+set_expand_screen = function ()
 	kb.stroke("lwin", "p");
     os.sleep (500);
     kb.stroke("end");
@@ -148,20 +111,7 @@ actions.switch = function()
 	kb.stroke("up");
 	os.sleep (500);
 	kb.stroke("return");
-	os.sleep (1500);
-    kb.stroke("home");
-	os.sleep (500);
-	kb.stroke("return");
-	os.sleep (500);
-	kb.stroke("esc");
-
-	os.sleep (2000);
-	
-	if OS_WINDOWS then
-		local hwnd = win.window("Kodi.exe");
-		if (hwnd == 0) then actions.launch(); end
-		win.switchtowait("Kodi.exe");
-	end
+	os.sleep (1000);
 end
 
 --@help Start playback
