@@ -16,13 +16,13 @@
             <!-- </row> -->
 			<row weight="1">
                 <button type="button" text="PC" ontap="pc_screen" />
-				<button type="button" text="Steam" ontap="steam_screen" />
-				<button type="button" text="Kodi" ontap="switch" />
+				<button type="button" text="TV + Steam" ontap="steam_screen" />
+				<button type="button" text="TV + Kodi" ontap="switch" />
             </row>
             <row weight="1">
-				<button type="button" text="On" ontap="@wol" />
-                <button type="button" text="Suspend" ontap="sleep" />
-                <button type="button" text="Off" ontap="shutdown" />
+				<button type="button" text="Encender\nPC\n(wait 1 min)" ontap="@wol" />
+                <button type="button" text="Suspender\nPC" ontap="sleep" />
+                <button type="button" text="Apagar\nPC" ontap="shutdown" />
             </row>
         <!-- <tab text="All Games"> -->
             <!-- <row weight=".5"> -->

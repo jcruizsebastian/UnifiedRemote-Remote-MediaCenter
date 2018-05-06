@@ -31,9 +31,7 @@ end
 --@help Force system shutdown
 --@param sec:number Timeout in seconds (default 5)
 actions.shutdown = function ()
-	set_secondary_screen();
-
-	os.sleep (2000);
+	actions.pc_screen();
 
 	if not sec then sec = 5; end
 	os.execute("shutdown /s /f /t " .. sec);
