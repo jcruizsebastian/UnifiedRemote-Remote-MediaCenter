@@ -19,7 +19,7 @@ end
 
 --@help Change screen
 actions.pc_screen = function ()
-	set_secondary_screen();
+	set_primary_screen();
 	
 	win.close("kodi.exe");
 	win.close("steam.exe");
@@ -40,7 +40,7 @@ end
 --@help Change screen
 actions.kodi_screen = function ()
 	set_expand_screen();
-	set_primary_screen();
+	set_secondary_screen();
 
 	os.start("C:/Program Files (x86)/Kodi/kodi.exe");
 	os.sleep (6000);
@@ -52,7 +52,7 @@ end
 --@help Change screen
 actions.steam_screen = function ()
 	set_expand_screen();
-	set_primary_screen();
+	set_secondary_screen();
 
 	os.sleep (2000);
 	os.start("C:/Program Files (x86)/Steam/Steam.exe -bigpicture");
@@ -70,7 +70,7 @@ end
 --@help Focus Kodi application
 actions.switch = function()
 	set_expand_screen();
-	set_primary_screen();
+	set_secondary_screen();
 	
 	if OS_WINDOWS then
 		local hwnd = win.window("Kodi.exe");
@@ -79,10 +79,10 @@ actions.switch = function()
 	end
 end
 
-set_primary_screen = function ()
+set_secondary_screen = function ()
 	kb.stroke("lwin", "p");
     os.sleep (500);
-    kb.stroke("home");
+    kb.stroke("end");
 	os.sleep (500);
 	kb.stroke("return");
 	os.sleep (500);
@@ -90,10 +90,10 @@ set_primary_screen = function ()
 	os.sleep (1000);
 end
 
-set_secondary_screen = function ()
+set_primary_screen = function ()
 	kb.stroke("lwin", "p");
     os.sleep (500);
-    kb.stroke("end");
+    kb.stroke("home");
 	os.sleep (500);
 	kb.stroke("return");
 	os.sleep (500);
